@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
 import { client, urlFor } from '@/lib/client';
-import { Product } from '../../components';
+import { Product } from '@/components';
 import { useStateContext } from '@/context/StateContext';
 
 const ProductDetails = ({ product, products }) => {
@@ -12,6 +12,7 @@ const ProductDetails = ({ product, products }) => {
 
   const handleBuyNow = () => {
     onAdd(product, qty);
+
     setShowCart(true);
   }
 
@@ -20,13 +21,13 @@ const ProductDetails = ({ product, products }) => {
         <div className="product-detail-container">
           <div>
             <div className="image-container">
-              <img src={urlFor(image && image[index])} className="product-detail-image" />
+              <img src={urlFor(image && image[index]).url()} className="product-detail-image"  alt="product"/>
             </div>
             <div className="small-images-container">
               {image?.map((item, i) => (
                   <img
                       key={i}
-                      src={urlFor(item)}
+                      src={urlFor(item).url()}
                       className={i === index ? 'small-image selected-image' : 'small-image'}
                       onMouseEnter={() => setIndex(i)}
                   />
@@ -85,8 +86,7 @@ export const getStaticPaths = async () => {
     slug {
       current
     }
-  }
-  `;
+  }`;
 
   const products = await client.fetch(query);
 

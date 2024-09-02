@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
 
 const Context = createContext();
@@ -46,7 +46,7 @@ export const StateContext = ({ children }) => {
     setCartItems(newCartItems);
   }
 
-  const toggleCartItemQuanitity = (id, value) => {
+  const toggleCartItemQuantity = (id, value) => {
     foundProduct = cartItems.find((item) => item._id === id)
     index = cartItems.findIndex((product) => product._id === id);
     const newCartItems = cartItems.filter((item) => item._id !== id)
@@ -65,7 +65,7 @@ export const StateContext = ({ children }) => {
   }
 
   const incQty = () => {
-    setQty((prevQty) => prevQty + 1);
+    return setQty((prevQty) => prevQty + 1);
   }
 
   const decQty = () => {
@@ -88,7 +88,7 @@ export const StateContext = ({ children }) => {
             incQty,
             decQty,
             onAdd,
-            toggleCartItemQuanitity,
+            toggleCartItemQuantity,
             onRemove,
             setCartItems,
             setTotalPrice,

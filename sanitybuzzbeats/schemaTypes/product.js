@@ -1,7 +1,6 @@
 import {defineType} from "sanity";
 
-let product;
-export default product = defineType({
+const product = defineType({
   name: 'product',
   title: 'Product',
   type: 'document',
@@ -42,3 +41,4 @@ export default product = defineType({
   ]
 })
 
+export default product;

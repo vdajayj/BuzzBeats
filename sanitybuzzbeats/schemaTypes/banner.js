@@ -1,7 +1,6 @@
 import { defineType} from 'sanity';
 
-let banner;
-export default banner = defineType({
+const banner = defineType({
   name: 'banner',
   title: 'Banner',
   type: 'document',
@@ -9,7 +8,7 @@ export default banner = defineType({
         {
           name: 'image',
           title: 'Image',
-          type: 'image',
+          type: 'SanityImageSource',
           options: {
             hotspot: true,
           },
@@ -63,3 +62,4 @@ export default banner = defineType({
   ],
 })
 
+export default banner;
